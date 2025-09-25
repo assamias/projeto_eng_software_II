@@ -17,12 +17,13 @@
         <button id="btnHome" class="btn btn-ghost" aria-label="Início">Início</button>
         <button id="btnBiblioteca" class="btn btn-ghost" aria-label="Biblioteca">Biblioteca</button>
         <button id="btnProgresso" class="btn btn-ghost" aria-label="Meu Progresso">Meu Progresso</button>
-        <button id="btnProgresso" class="btn btn-ghost" aria-label="Sair">Sair</button>
+        <button id="btnLogout" class="btn btn-ghost" aria-label="Sair">Sair</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
+    <!-- Home -->
     <section id="homeView" class="view active" aria-labelledby="homeTitle">
       <div class="hero">
         <h2 id="homeTitle">Curso: Diversidade, Educação, Gestão e Movimentos Sociais</h2>
@@ -34,6 +35,7 @@
       <div id="modulosGrid" class="grid"></div>
     </section>
 
+    <!-- Aula -->
     <section id="aulaView" class="view" aria-live="polite">
       <button class="btn btn-ghost mb-16" id="voltarLista">&larr; Voltar</button>
       <div class="card">
@@ -52,6 +54,7 @@
       </div>
     </section>
 
+    <!-- Quiz -->
     <section id="quizView" class="view">
       <button class="btn btn-ghost mb-16" id="voltarAula">&larr; Voltar para a aula</button>
       <div class="card">
@@ -67,6 +70,7 @@
       </div>
     </section>
 
+    <!-- Biblioteca -->
     <section id="bibliotecaView" class="view">
       <h2>Biblioteca</h2>
       <p>Material base do curso (artigo completo) e leituras de apoio.</p>
@@ -78,6 +82,7 @@
       </ul>
     </section>
 
+    <!-- Progresso -->
     <section id="progressoView" class="view">
       <h2>Meu Progresso</h2>
       <div id="progressoResumo" class="card"></div>
@@ -91,6 +96,6 @@
   </footer>
 
   <script src="content.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js" type="module"></script>
 </body>
 </html>

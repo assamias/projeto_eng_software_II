@@ -18,11 +18,11 @@
         Faça login para iniciar sua jornada inclusiva.
       </p>
       <form id="loginForm">
-        <label for="user">Usuário</label>
-        <input type="text" id="user" placeholder="Digite seu nome" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite seu email" required />
 
-        <label for="pass">Senha</label>
-        <input type="password" id="pass" placeholder="Digite sua senha" required />
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required />
 
         <button type="submit" class="btn btn-primary">Entrar</button>
       </form>
@@ -33,15 +33,38 @@
   </main>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e){
+    document.getElementById("loginForm").addEventListener("submit", async function(e){
       e.preventDefault();
-      const user = document.getElementById("user").value.trim();
-      const pass = document.getElementById("pass").value.trim();
-      if(user && pass){
-        localStorage.setItem("curso_user", user);
-        window.location.href = "index.html"; // redireciona para o curso
+      const email = document.getElementById("email").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      if(email && senha){
+        try {
+          const res = await fetch("http://localhost:4000/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, senha })
+          });
+
+          if (!res.ok) {
+            const error = await res.json();
+            alert("Erro: " + (error.error || "Não foi possível fazer login."));
+            return;
+          }
+
+          const data = await res.json();
+          // Guardar token e nome no localStorage
+          localStorage.setItem("curso_token", data.token);
+          localStorage.setItem("curso_user", data.nome);
+
+          alert("Login realizado com sucesso! Bem-vindo(a), " + data.nome);
+          window.location.href = "index.html"; // vai para o curso
+        } catch (err) {
+          console.error(err);
+          alert("Erro de conexão com o servidor.");
+        }
       } else {
-        alert("Preencha usuário e senha.");
+        alert("Preencha email e senha.");
       }
     });
   </script>
