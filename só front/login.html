@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Curso Diversidade</title>
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: "Inter", sans-serif;
+      background: #0b0f14;
+      color: #e8eef6;
+    }
+
+    .login-box {
+      background: #0e1520;
+      border: 1px solid #1d2a3a;
+      border-radius: 12px;
+      padding: 32px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .login-box h2 { margin-bottom: 8px; font-size: 1.5rem; }
+
+    .login-box p {
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #b8c4d6;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 6px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #2a3b55;
+      background: #0e1a2b;
+      color: #e8eef6;
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    input::placeholder { color: #8a9bb8; }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .login-box a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-box a:hover { text-decoration: underline; }
+
+    .signup {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Entrar no Curso</h2>
+    <p>
+      A diversidade é movimento, conflito e emancipação.<br>
+      Faça login para iniciar sua jornada inclusiva.
+    </p>
+    <form>
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" placeholder="Digite seu usuário" required>
+      
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required>
+      
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+    <p class="signup">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+  </div>
+
+  <script>
+    document.querySelector("form").addEventListener("submit", function(e){
+      e.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+      
+      if(usuario && senha){
+        localStorage.setItem("curso_user", usuario);
+        window.location.href = "index.html";
+      } else {
+        alert("Preencha todos os campos.");
+      }
+    });
+  </script>
+</body>
+</html>

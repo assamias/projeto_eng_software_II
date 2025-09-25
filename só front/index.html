@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso: Diversidade, Educação e Movimentos Sociais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container flex space-between align-center">
+      <h1 class="brand">Diversidade na Educação</h1>
+      <nav>
+        <button id="btnHome" class="btn btn-ghost" aria-label="Início">Início</button>
+        <button id="btnBiblioteca" class="btn btn-ghost" aria-label="Biblioteca">Biblioteca</button>
+        <button id="btnProgresso" class="btn btn-ghost" aria-label="Meu Progresso">Meu Progresso</button>
+        <button id="btnSair" class="btn btn-ghost" aria-label="Sair">Sair</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="homeView" class="view active" aria-labelledby="homeTitle">
+      <div class="hero">
+        <h2 id="homeTitle">Curso: Diversidade, Educação, Gestão e Movimentos Sociais</h2>
+        <p>Aprenda os fundamentos de diversidade como movimento, as críticas ao multiculturalismo hegemônico, a gestão democrática e as políticas públicas de educação.</p>
+        <div class="actions">
+          <button id="btnComecar" class="btn btn-primary">Começar agora</button>
+        </div>
+      </div>
+      <div id="modulosGrid" class="grid"></div>
+    </section>
+
+    <section id="aulaView" class="view" aria-live="polite">
+      <button class="btn btn-ghost mb-16" id="voltarLista">&larr; Voltar</button>
+      <div class="card">
+        <div class="card-header">
+          <h3 id="aulaTitulo"></h3>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+        <article id="aulaConteudo" class="prose"></article>
+        <div class="lesson-nav">
+          <button id="btnAnterior" class="btn" aria-label="Aula anterior">Anterior</button>
+          <button id="btnProxima" class="btn btn-primary" aria-label="Próxima aula">Próxima</button>
+          <button id="btnQuiz" class="btn btn-accent" aria-label="Fazer quiz desta unidade">Fazer Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizView" class="view">
+      <button class="btn btn-ghost mb-16" id="voltarAula">&larr; Voltar para a aula</button>
+      <div class="card">
+        <div class="card-header">
+          <h3 id="quizTitulo">Quiz</h3>
+        </div>
+        <form id="quizForm" class="quiz"></form>
+        <div class="lesson-nav">
+          <button id="btnEnviarQuiz" class="btn btn-primary">Enviar respostas</button>
+          <button id="btnRefazer" class="btn">Refazer</button>
+        </div>
+        <div id="quizResultado" class="resultado" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="bibliotecaView" class="view">
+      <h2>Biblioteca</h2>
+      <p>Material base do curso (artigo completo) e leituras de apoio.</p>
+      <ul class="library">
+        <li>
+          <span>Artigo base (PDF): <em>Diversidade: conceitos e práticas presentes na educação, gestão e movimentos sociais</em></span>
+          <a class="btn btn-link" href="#" onclick="alert('O PDF está disponível na plataforma de origem deste curso.'); return false;">Abrir</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="progressoView" class="view">
+      <h2>Meu Progresso</h2>
+      <div id="progressoResumo" class="card"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>Conteúdo educacional para fins de estudo. &copy; 2025</small>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Proteção: se não estiver logado, volta pro login
+    if(!localStorage.getItem("curso_user")){
+      window.location.href = "login.html";
+    }
+
+    // Botão sair
+    document.getElementById("btnSair").addEventListener("click", function(){
+      localStorage.removeItem("curso_user");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
