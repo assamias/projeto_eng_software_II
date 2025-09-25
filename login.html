@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Curso Diversidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <div class="login-card card">
+      <h2>Entrar no Curso</h2>
+      <p class="subtitle">
+        A diversidade é movimento, conflito e emancipação.<br/>
+        Faça login para iniciar sua jornada inclusiva.
+      </p>
+      <form id="loginForm">
+        <label for="user">Usuário</label>
+        <input type="text" id="user" placeholder="Digite seu nome" required />
+
+        <label for="pass">Senha</label>
+        <input type="password" id="pass" placeholder="Digite sua senha" required />
+
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+      <p style="margin-top:16px;">
+        Não tem conta? <a href="cadastro.html" class="btn-link">Cadastre-se</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const user = document.getElementById("user").value.trim();
+      const pass = document.getElementById("pass").value.trim();
+      if(user && pass){
+        localStorage.setItem("curso_user", user);
+        window.location.href = "index.html"; // redireciona para o curso
+      } else {
+        alert("Preencha usuário e senha.");
+      }
+    });
+  </script>
+</body>
+</html>
