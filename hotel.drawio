@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="HotelRelacional" name="Modelo Relacional - Hotel">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- CLIENTE -->
+        <mxCell id="Cliente" value="CLIENTE&#xa;PK rg&#xa;nome&#xa;fone&#xa;sexo" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- QUARTO -->
+        <mxCell id="Quarto" value="QUARTO&#xa;PK numero&#xa;andar&#xa;tipo&#xa;descric&#xa;preco" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="180" width="170" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- RESERVA -->
+        <mxCell id="Reserva" value="RESERVA&#xa;PK id_reserva&#xa;data&#xa;qtDias&#xa;FK rg_cliente (CLIENTE)&#xa;FK numero_quarto (QUARTO)" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- OCUPA -->
+        <mxCell id="Ocupa" value="OCUPA&#xa;PK id_ocupacao&#xa;FK rg_cliente (CLIENTE)&#xa;FK numero_quarto (QUARTO)&#xa;dataEntrada&#xa;dataSaida" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="260" y="220" width="200" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- SERVICO -->
+        <mxCell id="Servico" value="SERVICO&#xa;PK id_servico&#xa;nome&#xa;descr" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="720" y="180" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- SOLICITA -->
+        <mxCell id="Solicita" value="SOLICITA&#xa;PK,FK id_ocupacao (OCUPA)&#xa;PK,FK id_servico (SERVICO)&#xa;dataHora" style="shape=rectangle;whiteSpace=wrap;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="330" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- LIGAÇÕES -->
+        <mxCell id="Cliente_Reserva" edge="1" source="Cliente" target="Reserva" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Cliente_Ocupa" edge="1" source="Cliente" target="Ocupa" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Reserva_Quarto" edge="1" source="Reserva" target="Quarto" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Ocupa_Quarto" edge="1" source="Ocupa" target="Quarto" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Ocupa_Solicita" edge="1" source="Ocupa" target="Solicita" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Solicita_Servico" edge="1" source="Solicita" target="Servico" style="endArrow=none;strokeWidth=2;strokeColor=#000000">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
